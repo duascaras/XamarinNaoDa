@@ -25,7 +25,7 @@ namespace XamarinNaoDa.Views
             {
                 // Navigate to the NoteEntryPage, passing the ID as a query parameter.
                 Postagem postagem = (Postagem)e.CurrentSelection.FirstOrDefault();
-                await Shell.Current.GoToAsync($"{nameof(MainPage)}?{nameof(MainPage.PostId)}={postagem.ID}");
+                await Shell.Current.GoToAsync($"{nameof(MainPage)}?{nameof(MainPage.PostId)}={postagem.ID.ToString()}");
             }
         }
 

@@ -9,15 +9,17 @@
         </Frame>
         <Button Text="Pick Image" Clicked="PickImageClicked" />
         <Button Text="Take Image" Clicked="TakeImageClicked"/>
-        <Entry x:Name="comentarioEntry"
-               Placeholder="Legenda" />
-        <Image x:Name="resultImage" />
-        <Grid ColumnDefinitions="*,*">
-            <Button Text="Add to Database"
-                    Clicked="AddToDatabaseClicked"/>
-            <Button Grid.Column="1"
-                    Text="Delete"
-                    Clicked="OnDeleteButtonClicked"/>
+        <Button Text="Add to Database"
+                Clicked="AddToDatabaseClicked"/>
+        <Editor x:Name="comentarioEntry"
+                Placeholder="Legenda"
+                Text="{Binding Comentario}"
+                HeightRequest="75" />
+        <Image x:Name="resultImage" 
+               Source="{Binding Foto}" 
+               HeightRequest="75" />
+        <Grid>
+            <Button Text="Delete" Clicked="OnDeleteButtonClicked"/>
         </Grid>
     </StackLayout>
 </ContentPage>

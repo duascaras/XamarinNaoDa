@@ -24,6 +24,8 @@ namespace XamarinNaoDa
         public MainPage()
         {
             InitializeComponent();
+
+            BindingContext = new Postagem();
         }
 
         private async void LoadPost(string postId)
@@ -82,6 +84,7 @@ namespace XamarinNaoDa
 
             comentarioEntry.Text = string.Empty;
             resultImage.Source = new FileImageSource { File = "" };
+            await Shell.Current.GoToAsync("..");
         }
 
         private async void OnDeleteButtonClicked(object sender, EventArgs e)
