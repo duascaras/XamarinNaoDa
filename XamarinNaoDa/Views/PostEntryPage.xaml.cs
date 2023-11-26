@@ -1,7 +1,7 @@
 ﻿using System;
-using System.IO;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using XamarinNaoDa.Models;
 
 // OOPS! NO F1 HELP MATCH WAS FOUND
 // MUITO BOM CODAR AQUI!!!!!
@@ -10,7 +10,6 @@ namespace XamarinNaoDa
 {
     public partial class MainPage : ContentPage
     {
-
         private string capturedPhotoPath;
 
         public MainPage()
@@ -19,7 +18,7 @@ namespace XamarinNaoDa
         }
 
         // Load Picture
-        async void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
             var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
             {
@@ -28,10 +27,10 @@ namespace XamarinNaoDa
 
             var stream = await result.OpenReadAsync();
             resultImage.Source = ImageSource.FromStream(() => stream);
-        }   
+        }
 
         // Take Picture
-        async void Button_Clicked_1(object sender, EventArgs e)
+        private async void Button_Clicked_1(object sender, EventArgs e)
         {
             var result = await MediaPicker.CapturePhotoAsync();
 
@@ -42,17 +41,10 @@ namespace XamarinNaoDa
 
                 capturedPhotoPath = result.FullPath;
             }
-            //resultImage.Source = ImageSource.FromStream(() => stream);
-        }
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            collectionView.ItemsSource = await App.Database.GetPostAsync();
         }
 
         // Add to Database
-        async void Button_Clicked_2(object sender, EventArgs e)
+        private async void Button_Clicked_2(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(comentarioEntry.Text))
             {
@@ -62,10 +54,18 @@ namespace XamarinNaoDa
                     Comentario = comentarioEntry.Text,
                     Foto = capturedPhotoPath
                 });
-
-                comentarioEntry.Text = string.Empty;
-                collectionView.ItemsSource = await App.Database.GetPostAsync();
             }
+            comentarioEntry.Text = string.Empty;
+            resultImage.Source = new FileImageSource { File = "" };
         }
+
+        //async void OnDeleteButtonClicked(object sender, EventArgs e)
+        //{
+        //    var post = await App.Database.GetPostAsync()
+        //    await App.Database.DeletePostAsync(post);
+
+        //    // Navigate backwards
+        //    await Shell.Current.GoToAsync("..");
+        //}
     }
 }

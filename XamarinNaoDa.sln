@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinNaoDa.Android", "Xam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinNaoDa.iOS", "XamarinNaoDa.iOS\XamarinNaoDa.iOS.csproj", "{B438496B-DD82-4C3D-A37C-82013F231A67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinNaoDa", "XamarinNaoDa\XamarinNaoDa.csproj", "{C68CCDD3-F534-46C9-8662-CBB059D05A53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamarinNaoDa", "XamarinNaoDa\XamarinNaoDa.csproj", "{C68CCDD3-F534-46C9-8662-CBB059D05A53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

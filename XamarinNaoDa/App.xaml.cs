@@ -1,20 +1,21 @@
 ﻿using System;
 using System.IO;
 using Xamarin.Forms;
+using XamarinNaoDa.Data;
 
 namespace XamarinNaoDa
 {
     public partial class App : Application
     {
-        private static Database database;
+        private static PostDatabase database;
 
-        public static Database Database
+        public static PostDatabase Database
         {
             get
             {
                 if (database == null)
                 {
-                    database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "postagem.db3"));
+                    database = new PostDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "postagem.db3"));
                 }
                 return database;
             }
@@ -23,8 +24,7 @@ namespace XamarinNaoDa
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            MainPage = new AppShell();
         }
 
         protected override void OnStart()

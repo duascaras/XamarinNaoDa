@@ -1,15 +1,15 @@
 ﻿using SQLite;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using XamarinNaoDa.Models;
 
-namespace XamarinNaoDa
+namespace XamarinNaoDa.Data
 {
-    public class Database
+    public class PostDatabase
     {
         private readonly SQLiteAsyncConnection _database;
 
-        public Database(string dbPath)
+        public PostDatabase(string dbPath)
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Postagem>().Wait();
@@ -20,9 +20,22 @@ namespace XamarinNaoDa
             return _database.Table<Postagem>().ToListAsync();
         }
 
+        public Task<Postagem> GetPostAsync(int id)
+        {
+            // Get a specific post.
+            return _database.Table<Postagem>()
+                            .Where(i => i.ID == id)
+                            .FirstOrDefaultAsync();
+        }
+
         public Task<int> SavePostAsync(Postagem postagem)
         {
             return _database.InsertAsync(postagem);
+        }
+
+        public Task<int> DeletePostAsync(Postagem postagem)
+        {
+            return _database.DeleteAsync(postagem);
         }
     }
 }

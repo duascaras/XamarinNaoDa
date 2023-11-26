@@ -9,20 +9,9 @@
         </Frame>
         <Button Text="Pick Image" Clicked="Button_Clicked" />
         <Button Text="Take Image" Clicked="Button_Clicked_1"/>
-        <Image x:Name="resultImage" />
         <Entry x:Name="comentarioEntry"
                Placeholder="Legenda" />
         <Button Text="Add to Database" Clicked="Button_Clicked_2"/>
-        <CollectionView x:Name="collectionView">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Padding="10" Spacing="5" BackgroundColor="#E8E8E8">
-                        <Label Text="{Binding DataPostagem, StringFormat='Date: {0:d}'}" FontSize="Medium" />
-                        <Label Text="{Binding Comentario}" TextColor="Black" FontSize="Small" />
-                        <Image Source="{Binding Foto}" HeightRequest="100" WidthRequest="100" Aspect="AspectFill"/>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        <Image x:Name="resultImage" />
     </StackLayout>
 </ContentPage>

@@ -1,7 +1,7 @@
 ﻿using SQLite;
 using System;
 
-namespace XamarinNaoDa
+namespace XamarinNaoDa.Models
 {
     public class Postagem
     {
