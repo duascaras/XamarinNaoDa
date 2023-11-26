@@ -8,17 +8,41 @@ using XamarinNaoDa.Models;
 
 namespace XamarinNaoDa
 {
+    [QueryProperty(nameof(PostId), nameof(PostId))]
     public partial class MainPage : ContentPage
     {
-        private string capturedPhotoPath;
+        private string _capturedPhotoPath;
+
+        public string PostId
+        {
+            set
+            {
+                LoadPost(value);
+            }
+        }
 
         public MainPage()
         {
             InitializeComponent();
         }
 
+        private async void LoadPost(string postId)
+        {
+            try
+            {
+                int id = Convert.ToInt32(postId);
+
+                Postagem postagem = await App.Database.GetPostAsync(id);
+                BindingContext = postagem;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Failed to load note.");
+            }
+        }
+
         // Load Picture
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void PickImageClicked(object sender, EventArgs e)
         {
             var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
             {
@@ -30,7 +54,7 @@ namespace XamarinNaoDa
         }
 
         // Take Picture
-        private async void Button_Clicked_1(object sender, EventArgs e)
+        private async void TakeImageClicked(object sender, EventArgs e)
         {
             var result = await MediaPicker.CapturePhotoAsync();
 
@@ -39,12 +63,12 @@ namespace XamarinNaoDa
                 var stream = await result.OpenReadAsync();
                 resultImage.Source = ImageSource.FromStream(() => stream);
 
-                capturedPhotoPath = result.FullPath;
+                _capturedPhotoPath = result.FullPath;
             }
         }
 
         // Add to Database
-        private async void Button_Clicked_2(object sender, EventArgs e)
+        private async void AddToDatabaseClicked(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(comentarioEntry.Text))
             {
@@ -52,20 +76,21 @@ namespace XamarinNaoDa
                 {
                     DataPostagem = DateTime.UtcNow.Date,
                     Comentario = comentarioEntry.Text,
-                    Foto = capturedPhotoPath
+                    Foto = _capturedPhotoPath
                 });
             }
+
             comentarioEntry.Text = string.Empty;
             resultImage.Source = new FileImageSource { File = "" };
         }
 
-        //async void OnDeleteButtonClicked(object sender, EventArgs e)
-        //{
-        //    var post = await App.Database.GetPostAsync()
-        //    await App.Database.DeletePostAsync(post);
+        private async void OnDeleteButtonClicked(object sender, EventArgs e)
+        {
+            var post = (Postagem)BindingContext;
+            await App.Database.DeletePostAsync(post);
 
-        //    // Navigate backwards
-        //    await Shell.Current.GoToAsync("..");
-        //}
+            // Navigate backwards
+            await Shell.Current.GoToAsync("..");
+        }
     }
 }

@@ -7,11 +7,17 @@
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="Media Picker Sample!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
-        <Button Text="Pick Image" Clicked="Button_Clicked" />
-        <Button Text="Take Image" Clicked="Button_Clicked_1"/>
+        <Button Text="Pick Image" Clicked="PickImageClicked" />
+        <Button Text="Take Image" Clicked="TakeImageClicked"/>
         <Entry x:Name="comentarioEntry"
                Placeholder="Legenda" />
-        <Button Text="Add to Database" Clicked="Button_Clicked_2"/>
         <Image x:Name="resultImage" />
+        <Grid ColumnDefinitions="*,*">
+            <Button Text="Add to Database"
+                    Clicked="AddToDatabaseClicked"/>
+            <Button Grid.Column="1"
+                    Text="Delete"
+                    Clicked="OnDeleteButtonClicked"/>
+        </Grid>
     </StackLayout>
 </ContentPage>

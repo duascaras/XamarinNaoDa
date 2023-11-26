@@ -6,9 +6,13 @@
     <!-- Add an item to the toolbar -->
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add"
-                     Clicked="ToolbarItem_Clicked_1" />
+                     Clicked="AddBarClicked" />
     </ContentPage.ToolbarItems>
-    <CollectionView x:Name="collectionView">
+
+    <CollectionView x:Name="collectionView"
+                    Margin="20"
+                    SelectionMode="Single"
+                    SelectionChanged="OnSelectionChanged">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <StackLayout Padding="10" Spacing="5" BackgroundColor="#E8E8E8">
