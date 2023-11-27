@@ -13,11 +13,13 @@ namespace XamarinNaoDa
         {
             get
             {
-                if (database == null)
+                // Early return >>
+                if (database != null)
                 {
-                    database = new PostDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "postagem.db3"));
+                    return database;
                 }
-                return database;
+
+                return database = new PostDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "postagem.db3"));
             }
         }
 

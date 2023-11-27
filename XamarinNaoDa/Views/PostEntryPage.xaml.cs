@@ -24,7 +24,6 @@ namespace XamarinNaoDa
         public MainPage()
         {
             InitializeComponent();
-
             BindingContext = new Postagem();
         }
 
@@ -43,7 +42,7 @@ namespace XamarinNaoDa
             }
         }
 
-        // Load Picture
+        // Load from Gallery
         private async void PickImageClicked(object sender, EventArgs e)
         {
             var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
@@ -51,11 +50,19 @@ namespace XamarinNaoDa
                 Title = "Pick a photo"
             });
 
+            // Show to Anderson
+            if (result == null)
+            {
+                await Shell.Current.GoToAsync("..");
+                return;
+            }
+
             var stream = await result.OpenReadAsync();
             resultImage.Source = ImageSource.FromStream(() => stream);
+            _capturedPhotoPath = result.FullPath;
         }
 
-        // Take Picture
+        // Take New Photo
         private async void TakeImageClicked(object sender, EventArgs e)
         {
             var result = await MediaPicker.CapturePhotoAsync();
@@ -64,7 +71,6 @@ namespace XamarinNaoDa
             {
                 var stream = await result.OpenReadAsync();
                 resultImage.Source = ImageSource.FromStream(() => stream);
-
                 _capturedPhotoPath = result.FullPath;
             }
         }

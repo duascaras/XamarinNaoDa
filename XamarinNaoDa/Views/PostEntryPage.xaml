@@ -5,23 +5,44 @@
 
     <StackLayout BackgroundColor="#ECEFF1" Padding="20" Spacing="20">
         <Frame BorderColor="#2296f3" CornerRadius="10" BackgroundColor="#1c76d2">
-            <Label Text="Photobook" HorizontalTextAlignment="Center" TextColor="White" FontSize="36" FontAttributes="Bold"/>
+            <Label Text="Photobook" 
+                   HorizontalTextAlignment="Center" 
+                   TextColor="White" 
+                   FontSize="36" 
+                   FontAttributes="Bold"/>
         </Frame>
-        <Button Text="Pick from Galery" Clicked="PickImageClicked" BackgroundColor="#2296f3" TextColor="White"/>
-        <Button Text="Take a Photo" Clicked="TakeImageClicked" BackgroundColor="#2296f3" TextColor="White"/>
+
+        <Button Text="Pick from Gallery" 
+                Clicked="PickImageClicked" 
+                BackgroundColor="#2296f3" 
+                TextColor="White"/>
+
+        <Button Text="Take a Photo" 
+                Clicked="TakeImageClicked" 
+                BackgroundColor="#2296f3" 
+                TextColor="White"/>
+
         <Button Text="Add to Database"
                 Clicked="AddToDatabaseClicked"
-                BackgroundColor="#2296f3" TextColor="White"/>
+                BackgroundColor="#2296f3" 
+                TextColor="White"/>
+
         <Editor x:Name="comentarioEntry"
                 Placeholder="                          Enter Comment" 
                 Text="{Binding Comentario}"
-                HeightRequest="75" BackgroundColor="#FFFFFF" />
+                HeightRequest="75" 
+                BackgroundColor="#FFFFFF" />
+
         <Image x:Name="resultImage"
                Source="{Binding Foto}" 
                HeightRequest="100" 
                BackgroundColor="#FFFFFF"/>
+
         <Grid>
-            <Button Text="Delete Photo" Clicked="OnDeleteButtonClicked" BackgroundColor="DarkRed" TextColor="White"/>
+            <Button Text="Delete Photo" 
+                    Clicked="OnDeleteButtonClicked" 
+                    BackgroundColor="DarkRed" 
+                    TextColor="White"/>
         </Grid>
     </StackLayout>
 </ContentPage>

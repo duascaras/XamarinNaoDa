@@ -1,6 +1,5 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XamarinNaoDa.Views;
 
 namespace XamarinNaoDa
 {
