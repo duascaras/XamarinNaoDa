@@ -1,33 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamarinNaoDa.Views.AboutPage">
-    <!-- Layout children in two rows -->
-    <Grid RowDefinitions="Auto,*">
-        <Image Source="xamarin_logo.png"
-               BackgroundColor="{OnPlatform iOS=LightSlateGray, Android=#2196F3}"
-               VerticalOptions="Center"
-               HeightRequest="64" />
-        <!-- Layout children vertically -->
-        <StackLayout Grid.Row="1"
-                     Margin="20"
-                     Spacing="20">
-            <Label FontSize="22">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <FormattedString.Spans>
-                            <Span Text="Notes"
-                                  FontAttributes="Bold"
-                                  FontSize="22" />
-                            <Span Text=" v1.0" />
-                        </FormattedString.Spans>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-            <Label Text="This app is written in XAML and C# with the Xamarin Platform." />
-            <Label Text="Se você for maluco, clique abaixo para passar raiva com isso." />
-            <Button Text="Learn more"
-                    Clicked="OnButtonClicked" />
-        </StackLayout>
-    </Grid>
+             x:Class="XamarinNaoDa.Views.AboutPage"
+             Title="Photobook">
+    <ContentPage.Content>
+        <ScrollView>
+            <!-- Light pink background -->
+            <StackLayout Padding="20" Spacing="20" BackgroundColor="#ECEFF1">
+                <Label Text="Notes"
+                       FontAttributes="Bold"
+                       FontSize="26"
+                       TextColor="Black" 
+                       HorizontalOptions="Center" />
+
+                <Label Text="Version 1.0"
+                       FontSize="18"
+                       TextColor="Black"
+                       HorizontalOptions="Center" />
+
+                <Label Text="This app is written in XAML and C# with the Xamarin Platform."
+                       FontSize="16"
+                       TextColor="Black" />
+
+                <Button Text="Learn more"
+                        Clicked="OnButtonClicked"
+                        BackgroundColor="#2296f3" 
+                        TextColor="White"
+                        CornerRadius="8"
+                        FontSize="18"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="FillAndExpand" />
+
+                <Label Text="Created by duascaras and MBS*"
+                       FontSize="12"
+                       TextColor="Black" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
+

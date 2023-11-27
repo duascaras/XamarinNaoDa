@@ -2,10 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinNaoDa.Views.PostsPage"
-             Title="Posts">
-    <!-- Add an item to the toolbar -->
+             Title="Photobook"
+             BackgroundColor="#ECEFF1">
+
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add"
+        <ToolbarItem Text="New Post"
                      Clicked="AddBarClicked" />
     </ContentPage.ToolbarItems>
 
@@ -15,9 +16,16 @@
                     SelectionChanged="OnSelectionChanged">
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <StackLayout Padding="10" Spacing="5" BackgroundColor="#E8E8E8">
-                    <Label Text="{Binding DataPostagem, StringFormat='Date: {0:d}'}" FontSize="Medium" />
-                    <Label Text="{Binding Comentario}" TextColor="Black" FontSize="Small" />
+                <StackLayout Padding="10" Spacing="10" BackgroundColor="White">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                        <Label Text="Date:" FontSize="Small" VerticalOptions="Center" />
+                        <Label Text="{Binding DataPostagem, StringFormat='{0:d}'}" FontSize="Small" VerticalOptions="Center" />
+                    </StackLayout>
+                    <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,5,0,5" />
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                        <Label Text="Comment:" FontSize="Small" VerticalOptions="Center" />
+                        <Label Text="{Binding Comentario}" TextColor="Black" FontSize="Small" VerticalOptions="Center" />
+                    </StackLayout>
                     <Image Source="{Binding Foto}" HeightRequest="100" WidthRequest="100" Aspect="AspectFill"/>
                 </StackLayout>
             </DataTemplate>
